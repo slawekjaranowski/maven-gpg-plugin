@@ -65,9 +65,9 @@ public class GpgSignAttachedMojoIT
         // then
         assertThat( "Maven execution must fail", invocationResult.getExitCode(), not( 0 ) );
         assertThat(
-            "Maven execution failed because pinentry input prompt timed out",
+            "Maven execution failed because no pinentry program is available",
             buildLogContent,
-            containsString( "[GNUPG:] FAILURE sign 83886142" )
+            containsString( "[GNUPG:] FAILURE sign 67108949" )
         );
     }
 
