@@ -242,8 +242,12 @@ under the License.
               </execution>
             </executions>
             <configuration>
+              <environmentVariables>
+                <JENKINS_MAVEN_AGENT_DISABLED>true</JENKINS_MAVEN_AGENT_DISABLED>
+              </environmentVariables>
               <systemPropertyVariables>
                 <maven.home>${maven.home}</maven.home>
+                <https.protocols>${https.protocols}</https.protocols>
                 <gpg.homedir>${project.build.testOutputDirectory}/gnupg</gpg.homedir>
                 <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
                 <settingsFile>/it/settings.xml</settingsFile>

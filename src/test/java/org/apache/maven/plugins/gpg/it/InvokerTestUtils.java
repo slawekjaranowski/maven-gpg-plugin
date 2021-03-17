@@ -54,8 +54,15 @@ public class InvokerTestUtils
         request.setPomFile( pomFile );
 
         final Properties properties = new Properties();
-        properties.setProperty( "gpg.homedir", gpgHome.getAbsolutePath() );
         request.setProperties( properties );
+
+        // Required for JRE 7 to connect to Maven Central with TLSv1.2
+        final String httpsProtocols = System.getProperty( "https.protocols" );
+        if ( httpsProtocols != null && !httpsProtocols.isEmpty() ) {
+            properties.setProperty( "https.protocols", httpsProtocols );
+        }
+
+        properties.setProperty( "gpg.homedir", gpgHome.getAbsolutePath() );
 
         return request;
     }
